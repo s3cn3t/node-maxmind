@@ -3,6 +3,7 @@ var assert = require('assert'),
   Database = require('../lib/database');
 
 const GEO_CITY      = __dirname + '/dbs/GeoIPCity.dat';
+const GEO_CITY_V6   = __dirname + '/dbs/GeoIPCityv6.dat';
 const GEO_COUNTRY   = __dirname + '/dbs/GeoIP.dat';
 const GEO_ASN       = __dirname + '/dbs/GeoIPASNum.dat';
 
@@ -25,11 +26,11 @@ describe('lib/lookup_service', function() {
 
 
   describe('ip2Long()', function() {
-    it("should conver IP to the long format", function() {
-      var result = ls.ip2Long("87.229.134.24");
+    it('should conver IP to the long format', function() {
+      var result = ls.ip2Long('87.229.134.24');
       assert.equal(result, 1474659864);
 
-      var result = ls.ip2Long("195.68.137.18");
+      var result = ls.ip2Long('195.68.137.18');
       assert.equal(result, 3276048658);
     });
   });
@@ -62,8 +63,8 @@ describe('lib/lookup_service', function() {
   });
 
 
-  describe("seekCountry()", function() {
-    it("should perform binary search", function() {
+  describe('seekCountry()', function() {
+    it('should perform binary search', function() {
       var db = new Database(GEO_CITY);
       var iplong = ls.ip2Long('195.68.137.18');
       assert.equal(ls.seekCountry(db, iplong), 2854053);
